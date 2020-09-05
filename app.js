@@ -16,7 +16,7 @@ var commentRoutes    = require("./routes/comment"),
 	authRoutes       = require("./routes/index");
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://yelpCampTrial:<neubindatabase>@cluster2.se7uh.mongodb.net/<Ylepcamp_app>?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://yelpCampTrial:neubindatabase@cluster2.se7uh.mongodb.net/<Ylepcamp_app>?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false // louli here, I added this line to remove a deprecation warning, you can remove this comment after reading it (:
@@ -61,5 +61,5 @@ app.use(authRoutes);
 
 
 app.listen(process.env.PORT ||3000,process.env.IP,function(){
-	console.log("deploying example app has been started");
+	console.log("deploying yelpCamp app has been started");
 });
