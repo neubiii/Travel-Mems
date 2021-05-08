@@ -10,13 +10,14 @@ var Campground = require("./models/campground");
 var Comment = require("./models/comment");
 var User = require("./models/user");
 var seedDB = require("./seed");
-
+require('dotenv').config();
 var commentRoutes    = require("./routes/comment"),
     campgroundRoutes = require("./routes/campground"),	
 	authRoutes       = require("./routes/index");
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/yelpCamp_app', {
+mongoose.connect(process.env.DATABASEURL, {
+	//mongoose.connect('mongodb+srv://yelpCampTrial:<neubin@123>@cluster2.se7uh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false // louli here, I added this line to remove a deprecation warning, you can remove this comment after reading it (:
