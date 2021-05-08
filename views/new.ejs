@@ -1,29 +1,100 @@
-<%-include("partials/header")%>
-<div class="container">
-	<div class="row">
-		<h1 style="text-align:center;">ADD NEW COMMENT TO <%=campground.name%></h1>
-		<div style="width:30%; margin:30px auto;">
-			<form action="/campgrounds/<%=campground._id%>/comments" method="POST">
-	<div class="form-group">
-			<input class="form-control" type="text" placeholder="comment" name="comment[text]">
 
-	</div>
-	<!--<div class="form-group">
-		<input class="form-control" type="text" placeholder="author" name="comment[author]">
-	</div>-->
-	<div class="form-group">
-		<button class="btn btn-lg btn-primary btn-block">submit!</button>
-	</div>
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Travel Mems</title>
+	<link rel="stylesheet" type="text/css" href="\stylesheets\addcamp.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,800;0,900;1,700&display=swap" rel="stylesheet">
+
+
+	</head>
+<body>
+<header>
 	
+	 <div class="menu-toggle" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="overlay"></div>
+        <div class="container">
+            <nav>
+                <h1 class="brand"><a href="/landingPage">Travel<img class="tavel" src="\stylesheets\tavel.png">Mems</a></h1>
+                <ul>
+                    <li><a href="/memories">Home</a></li>
+					
+                    <%if(!currentUser){ %>
+				<li class="noLine"><a href="/login">Login</a></li>
+				<li class="noLine"><a href="/register">SignUp</a></li>
+				<% } else { %>
+				<li class="inname">Signed in as <%=currentUser.username%></li>
+				<li class="noLine"><a href="/logout">Logout</a></li>
+				<% } %>
+                 <li class="noLine"><a href="/contact" style="margin-left: auto;">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
 	
-</form>
-<a href="/campgrounds">Go back</a>
+<section>
+<div class="box" style="height: 300px;">
+		<div class="form">
+			<h2>Comment on <span><%=campground.name%></span></h2>
+			<form action="/memories/<%=campground._id%>/comments" method="POST">
+				<div class="inputBx">
+					<input type="text" placeholder="comment" required name="comment[text]">
+					 						
+				</div>
+								<div class="inputBx">
+					<input type="submit" value="Submit" name="">
+				</div>
+			</form>
+			
 		</div>
-
+		
 	</div>
+</section>
+</header>
+
+	<script type="text/javascript">
 	
-</div>
+	var open = document.getElementById('hamburger');
+var changeIcon = true;
+
+open.addEventListener("click", function(){
+
+    var overlay = document.querySelector('.overlay');
+    var nav = document.querySelector('nav');
+    var icon = document.querySelector('.menu-toggle i');
+
+    overlay.classList.toggle("menu-open");
+    nav.classList.toggle("menu-open");
+
+    if (changeIcon) {
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-times");
+
+        changeIcon = false;
+    }
+    else {
+        icon.classList.remove("fa-times");
+        icon.classList.add("fa-bars");
+        changeIcon = true;
+    }
+});
+
+</script>
+	
+</body>
+</html>
 
 
 
-<%-include("partials/footer")%>
+
+
+
+
+

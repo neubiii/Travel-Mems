@@ -1,13 +1,92 @@
-<%- include("partials/header")%>
 
-<h1>Login</h1>
 
-<form  action="/login" method="POST" >
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Travel Mems</title>
+	<link rel="stylesheet" type="text/css" href="\stylesheets\styleLog.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,800;0,900;1,700&display=swap" rel="stylesheet">
+
+
+	</head>
+<body>
 	
-	<input type="text" placeholder="username" name="username">
-	<input type="password" placeholder="password" name="password">
-	<input type="submit" value="Login">
+	<header>
+        <div class="menu-toggle" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="overlay"></div>
+        <div class="container">
+            <nav>
+                <h1 class="brand"><a href="/landingPage">Travel<img class="tavel" src="\stylesheets\tavel.png">Mems</a></h1>
+                <ul>
+                    <li><a href="/memories">Home</a></li>
+                    <li><a href="/login">Sign in</a></li>
+                    <li><a href="/register">Sign up</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+		
+		<section>
+	<div class="box">
+		<div class="form">
+			<h2>Login</h2>
+			<form action="\login" method="POST">
+				<div class="inputBx">
+					<input type="text" placeholder="username" required name="username">
+					 <img src="\stylesheets\user.png">							
+				</div>
+				<div class="inputBx">
+					<input type="password" placeholder="password" required name="password">
+	                <img src="\stylesheets\lock.png">								
+				</div>
+				<div class="inputBx">
+					<input type="submit" value="Login" name="">
+				</div>
+			</form>
+			<p>Forget <a class="sec" href="#">password</a></p>
+			<p>Need an <a class="sec" href="\register">account</a></p>
+		</div>
+		
+	</div>
+</section>
+		
+</header>
 	
-</form>
+	
 
-<%- include("partials/footer")%>
+<script type="text/javascript">
+	
+	var open = document.getElementById('hamburger');
+var changeIcon = true;
+
+open.addEventListener("click", function(){
+
+    var overlay = document.querySelector('.overlay');
+    var nav = document.querySelector('nav');
+    var icon = document.querySelector('.menu-toggle i');
+
+    overlay.classList.toggle("menu-open");
+    nav.classList.toggle("menu-open");
+
+    if (changeIcon) {
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-times");
+
+        changeIcon = false;
+    }
+    else {
+        icon.classList.remove("fa-times");
+        icon.classList.add("fa-bars");
+        changeIcon = true;
+    }
+});
+
+</script>
+</body>
+</html>
+
+

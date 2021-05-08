@@ -8,7 +8,7 @@ var Comment = require("../models/comment");
 var middleware = require("../middleware");
 
 
-router.get("/campgrounds/:id/comments/new",middleware.isLoggedIn,function(req,res){
+router.get("/memories/:id/comments/new",middleware.isLoggedIn,function(req,res){
 	//find campground by id
 	Campground.findById(req.params.id,function(err,campground){
 		if(err){
@@ -22,11 +22,11 @@ router.get("/campgrounds/:id/comments/new",middleware.isLoggedIn,function(req,re
 	
 });
 
-router.post("/campgrounds/:id/comments",middleware.isLoggedIn,function(req,res){
+router.post("/memories/:id/comments",middleware.isLoggedIn,function(req,res){
 	Campground.findById(req.params.id,function(err,campground){
 		if(err){
 			console.log(err);
-			res.redirect("/campgrounds");
+			res.redirect("/memories");
 		}
 		else{
 			
@@ -42,7 +42,7 @@ router.post("/campgrounds/:id/comments",middleware.isLoggedIn,function(req,res){
 					comment.save();
 					campground.comments.push(comment);
 					campground.save();
-					res.redirect('/campgrounds/' + campground._id);
+					res.redirect('/memories/' + campground._id);
 					
 				}
 			})
@@ -52,7 +52,7 @@ router.post("/campgrounds/:id/comments",middleware.isLoggedIn,function(req,res){
 
 //edit the comments//
 
-router.get("/campgrounds/:id/comments/:comment_id/editComm",middleware.checkCommentAuth,function(req,res){
+router.get("/memories/:id/comments/:comment_id/editComm",middleware.checkCommentAuth,function(req,res){
 	Comment.findById(req.params.comment_id,function(err,foundComment){
 		if(err){
 			console.log(err);
@@ -67,13 +67,13 @@ router.get("/campgrounds/:id/comments/:comment_id/editComm",middleware.checkComm
 
 //update the comment with the edit one//
 
-router.put("/campgrounds/:id/comments/:comment_id",middleware.checkCommentAuth, function(req,res){
+router.put("/memories/:id/comments/:comment_id",middleware.checkCommentAuth, function(req,res){
 	Comment.findByIdAndUpdate(req.params.comment_id,req.body.comment,function(err,updatedComment){
 		if(err){
 			res.redirect("back");
 		}
 		else{
-			res.redirect("/campgrounds/"+req.params.id);
+			res.redirect("/memories/"+req.params.id);
 		}
 	})
 })
@@ -82,14 +82,14 @@ router.put("/campgrounds/:id/comments/:comment_id",middleware.checkCommentAuth, 
 
 //comment delete or remove///
 
-router.delete("/campgrounds/:id/comments/:comment_id",middleware.checkCommentAuth, function(req,res){
+router.delete("/memories/:id/comments/:comment_id",middleware.checkCommentAuth, function(req,res){
 	Comment.findByIdAndRemove(req.params.comment_id,function(err){
 		if(err){
 			res.redirect("back")
 		}
 		else{
 			req.flash("success","Comment Deleted")
-			res.redirect("/campgrounds/"+req.params.id)
+			res.redirect("/memories/"+req.params.id)
 		}
 	})
 });

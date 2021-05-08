@@ -3,10 +3,10 @@
 <div class ="container">
 	<div class="jumbotron">
 		<header class="container">
-			<h1>Welcome To YelpCamp!</h1>
-			<p>Here's the handpicked campgrounds around the world</p>
+			<h1>Welcome To Travel Mems!</h1>
+			<p>Here's where you can find best travel memories of people around the world. </p>
 					
-<p><a class="btn btn-primary btn-lg" href="/campgrounds/new">Add campgrounds</a></p>
+<p><a class="btn btn-primary btn-lg" href="/memories/new">Okey! Let me add my Memories</a></p>
 
 		</header>
 
@@ -21,7 +21,7 @@
 			
 		</div>
 <p>
-				<a href="/campgrounds/<%=campground._id%>" class="btn btn-primary">More info</a>
+				<a href="/memories/<%=campground._id%>" class="btn btn-primary">More info</a>
 			</p>
 	</div>
 	
@@ -33,6 +33,26 @@
 	
 </div>
 
+<script>
 
+// When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
+
+// Get the navbar
+var navbar = document.getElementByTagName("header");
+
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("colored")
+  } else {
+    navbar.classList.remove("colored");
+  }
+}
+
+</script>
 
 <%- include("partials/footer")%>

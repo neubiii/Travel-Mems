@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>YelpCamp</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/landing.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
-    </head>
-    <body>
-    
-    <div class="container">
-        <% if(error && error.length > 0){ %>
-            <div class="alert alert-danger" role="alert">
-                <%= error %>
-            </div>
-        <% } %>
-        <% if(success && success.length > 0){ %>
-            <div class="alert alert-success" role="alert">
-                <%= success %>
-            </div>
-        <% } %>
+<head>
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="\landing.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+ <section class="showcase">
+    <header>
+      <h2 class="logo" href="#">Travel<img class="tavel" src="\stylesheets\tavel.png">Mems</h2>
+      <div class="toggle"></div>
+    </header>
+    <video src="\stylesheets\india2.mp4" muted loop autoplay></video>
+    <div class="overlay"></div>
+    <div class="text">
+      <h2>Never Stop  </h2> 
+      <h3>Exploring The World</h3>
+      <p>Hi all, Myself Neubin Sebastian.Travel Mems is a website that is developed by myself.In this website people can share their amazing travelling memories with the world.People can also view other memories and can comment on it.So guys, start creating memories in Travel Mems.</p>
+      <a href="/memories">Explore</a>
     </div>
-    
-    <div id="landing-header">
- 		<h1>Welcome to YelpCamp!</h1>
-		<a href="/campgrounds" class="btn btn-lg btn-success">View All Campgrounds</a>
-    </div>
-    
-    <ul class="slideshow">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
+    <ul class="social">
+   
+      <li><a href="https://www.linkedin.com/in/neubii/"><img src="\stylesheets\linkedin4.png"></a></li>
+      <li><a href="https://www.instagram.com/neubii__/"><img src="https://i.ibb.co/ySwtH4B/instagram.png"></a></li>
     </ul>
+  </section>
+  <div class="menu">
+    <ul>
+      <li><a href="/campgrounds">Memories</a></li>
+      <li><a href="/campgrounds/new">Add Mem</a></li>
+      <li><a href="/register">Sign up</a></li>
+      <li><a href="/login">Sign in</a></li>
+      <li><a href="https://drive.google.com/file/d/1nE--soBkZIBu0VYaSzI1p0QEzjibXG7D/view?usp=sharing">About Me</a></li>
+    </ul>
+  </div>
+  <script type="text/javascript">
+     const menuToggle = document.querySelector('.toggle');
+      const showcase = document.querySelector('.showcase');
 
-<%- include("partials/footer")%>
+      menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        showcase.classList.toggle('active');
+      })
+  </script>
+</body>
+</html>

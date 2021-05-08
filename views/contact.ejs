@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Travel Mems</title>
+	<link rel="stylesheet" type="text/css" href="\stylesheets\addcamp.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,800;0,900;1,700&display=swap" rel="stylesheet">
+
+
+	</head>
+<body>
+<header>
+	
+	 <div class="menu-toggle" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="overlay"></div>
+        <div class="container">
+            <nav>
+                <h1 class="brand"><a href="/landingPage">Travel<img class="tavel" src="\stylesheets\tavel.png">Mems</a></h1>
+                <ul>
+                    <li><a href="/memories">Home</a></li>
+					<li><a href="https://drive.google.com/file/d/1nE--soBkZIBu0VYaSzI1p0QEzjibXG7D/view?usp=sharing">About Me</a></li>
+                
+                 <li class="noLine"><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+	
+<section>
+<div id="status"></div>
+<div class="box">
+		<div class="form">
+			<h2>Contact Me</h2>
+			<form id="my-form" action="https://formspree.io/f/mwkavjrr" method="POST">
+				<div class="inputBx">
+					<input type="text" placeholder="First name" required name="firstname">
+					 						
+				</div>
+				<div class="inputBx">
+					<input type="text" placeholder="Last name" required name="lastname">
+	                							
+				</div>
+				
+				<div class="inputBx">
+					<input type="email" placeholder="Email id" required name="email">
+	                							
+				</div>
+				
+				<div class="inputBx bttn">
+    <label for="description"></label>
+    <textarea class="form-control" id="massage" name="massage" rows="3" placeholder="Message"></textarea>
+  </div>
+				
+				<div class="inputBx">
+					<input type="submit" value="Send" name="">
+				</div>
+			</form>
+			
+		</div>
+		
+	</div>
+</section>
+</header>
+
+	<script type="text/javascript">
+	
+	var open = document.getElementById('hamburger');
+var changeIcon = true;
+
+		
+		
+		  var form = document.getElementById("my-form");
+    
+    async function handleSubmit(event) {
+      event.preventDefault();
+      var status = document.getElementById("status");
+      var data = new FormData(event.target);
+      fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+      }).then(response => {
+        status.innerHTML = "I got it, Thank You!";
+        form.reset()
+      }).catch(error => {
+        status.innerHTML = "Oops! There was a problem submitting your form"
+      });
+    }
+    form.addEventListener("submit", handleSubmit)
+		
+		
+		
+		
+open.addEventListener("click", function(){
+
+    var overlay = document.querySelector('.overlay');
+    var nav = document.querySelector('nav');
+    var icon = document.querySelector('.menu-toggle i');
+
+    overlay.classList.toggle("menu-open");
+    nav.classList.toggle("menu-open");
+
+    if (changeIcon) {
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-times");
+
+        changeIcon = false;
+    }
+    else {
+        icon.classList.remove("fa-times");
+        icon.classList.add("fa-bars");
+        changeIcon = true;
+    }
+});
+
+</script>
+	
+</body>
+</html>

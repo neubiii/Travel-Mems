@@ -16,7 +16,7 @@ var commentRoutes    = require("./routes/comment"),
 	authRoutes       = require("./routes/index");
 
 const mongoose = require('mongoose');
-mongoose.connect(process.env.DATABASEURL, {
+mongoose.connect('mongodb://localhost:27017/yelpCamp_app', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false // louli here, I added this line to remove a deprecation warning, you can remove this comment after reading it (:
@@ -47,6 +47,14 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.get("/landingPage",function(req,res){
+	res.render("landing")
+});
+
+app.get("/Contact",function(req,res){
+	
+	res.render("contact")
+});
 
 app.use(function(req,res,next){
 	res.locals.currentUser = req.user;

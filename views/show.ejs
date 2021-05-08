@@ -2,7 +2,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-3">
-			<p class="lead">YelpCamp</p>
+			<p class="lead"></p>
 			<div class="list-group">
 				<li class=" active list-group-item">Info 1</li>
 				<li class="list-group-item">Info 2</li>
@@ -14,15 +14,15 @@
 			<div class="thumbnail">
 				<img class="img-responsive" src="<%=campground.image%>">
 				<div class="caption-full">
-					<h4 class="pull-right">$ <%= campground.price%>/night	</h4>
+					<h4 class="pull-right">	</h4>
 					<h4><a><%=campground.name%></a></h4>
 					<p><%=campground.description%></p>
 					<p>
 						<em>Created by <%= campground.author.username%></em>
 					</p>
 					<%if(currentUser&&campground.author.id.equals(currentUser._id)){%>
-					<a class="btn btn-warning" href="/campgrounds/<%=campground._id%>/edit">Edit</a>
-					<form class="delete-form" action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST">
+					<a class="btn btn-warning" href="/memories/<%=campground._id%>/edit">Edit</a>
+					<form class="delete-form" action="/memories/<%=campground._id%>?_method=DELETE" method="POST">
 						<button  class="btn btn-danger">Delete</button>					
 					</form>
 					<%}%>
@@ -30,7 +30,7 @@
 			</div>
 			<div class="well">
 			<div class="text-right">
-						<a class="btn btn-success" href="/campgrounds/<%=campground._id%>/comments/new">Add Comment</a>		
+						<a class="btn btn-success" href="/memories/<%=campground._id%>/comments/new">Add Comment</a>		
 				</div>				
 <%campground.comments.forEach(function(comment){%>
 				<div class="row">
@@ -39,8 +39,8 @@
 						<span class="pull-right">10 Days ago</span>
 						<p><%=comment.text%></p>
 						<%if(currentUser&&comment.author.id.equals(currentUser._id)){%>
-						<a class="btn btn-xs btn-warning" href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/editComm">Edit</a>
-						<form class="delete-form" action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+						<a class="btn btn-xs btn-warning" href="/memories/<%=campground._id%>/comments/<%=comment._id%>/editComm">Edit</a>
+						<form class="delete-form" action="/memories/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
 							<button class="btn btn-xs btn-danger">Delete</button>
 						</form>
 						<%}%>

@@ -1,35 +1,101 @@
-<%-include("partials/header")%>
-<div class="container">
-	<div class="row">
-		<h1 style="text-align:center;">SUBMIT YOUR CAMPGROUND HERE</h1>
-		<div style="width:30%; margin:30px auto;">
-			<form action="/campgrounds" method="POST">
-	<div class="form-group">
-			<input class="form-control" type="text" placeholder="campname" name="name">
 
-	</div>
-	<div class="form-group">
-		<input class="form-control" type="number" placeholder="price" name="price" min="0.1" step="0.1">
-	</div>
-				<div class="form-group">
-		<input class="form-control" type="text" placeholder="image url" name="image">
-	</div>
-				<div class="form-group">
-		<input class="form-control" type="text" placeholder="describe" name="description">
-	</div>
-	<div class="form-group">
-		<button class="btn btn-lg btn-primary btn-block">submit!</button>
-	</div>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Travel Mems</title>
+	<link rel="stylesheet" type="text/css" href="\stylesheets\addcamp.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,800;0,900;1,700&display=swap" rel="stylesheet">
+
+
+	</head>
+<body>
+<header>
 	
+	 <div class="menu-toggle" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="overlay"></div>
+        <div class="container">
+            <nav>
+                <h1 class="brand"><a href="/landingPage">Travel<img class="tavel" src="\stylesheets\tavel.png">Mems</a></h1>
+                <ul>
+                    <li><a href="/memories">Home</a></li>
+					
+                    <%if(!currentUser){ %>
+				<li class="noLine"><a href="/login">Login</a></li>
+				<li class="noLine"><a href="/register">SignUp</a></li>
+				<% } else { %>
+				<li class="inname">Signed in as <%=currentUser.username%></li>
+				<li class="noLine"><a href="/logout">Logout</a></li>
+				<% } %>
+                 <li class="noLine"><a href="/contact" style="margin-left: auto;">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
 	
-</form>
-<a href="/campgrounds">Go back</a>
+<section>
+<div class="box">
+		<div class="form">
+			<h2>Submit your Memories</h2>
+			<form action="\memories" method="POST">
+				<div class="inputBx">
+					<input type="text" placeholder="memorie title" required name="name">
+					 						
+				</div>
+				<div class="inputBx">
+					<input type="text" placeholder="image url" required name="image">
+	                							
+				</div>
+				
+				<div class="inputBx bttn">
+    <label for="description"></label>
+    <textarea class="form-control" id="description" name="description" rows="3" placeholder="describe"></textarea>
+  </div>
+				
+				<div class="inputBx">
+					<input type="submit" value="Submit" name="">
+				</div>
+			</form>
+			
 		</div>
-
+		
 	</div>
+</section>
+</header>
+
+	<script type="text/javascript">
 	
-</div>
+	var open = document.getElementById('hamburger');
+var changeIcon = true;
+
+open.addEventListener("click", function(){
+
+    var overlay = document.querySelector('.overlay');
+    var nav = document.querySelector('nav');
+    var icon = document.querySelector('.menu-toggle i');
+
+    overlay.classList.toggle("menu-open");
+    nav.classList.toggle("menu-open");
+
+    if (changeIcon) {
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-times");
+
+        changeIcon = false;
+    }
+    else {
+        icon.classList.remove("fa-times");
+        icon.classList.add("fa-bars");
+        changeIcon = true;
+    }
+});
+
+</script>
+	
+</body>
+</html>
 
 
-
-<%-include("partials/footer")%>
